@@ -19,7 +19,12 @@ def getCoordinateStringFromKML(path):
 def createEncodedPolylineString(colist):
     coodinates = []
     for element in colist:
-        x, y = element.split(",")
+        if element == '':
+            continue
+        if element.count(',') == 1:
+            x,y = element.split(",")
+        else:
+            x, y, z = element.split(",")
         tup = (float(x), float(y))
         coodinates.append(tup)
     return GIST.encode_coords(coodinates)
@@ -29,15 +34,21 @@ if os.path.exists(txtdir) == False:
     os.mkdir(txtdir)
 
 # generate txt files
+successcount = failedcount = 0
 for filename in os.listdir(kmldir):
     head, ext = os.path.splitext(filename)
     if ext == ".kml":
+    #if ext == ".kml":
         path = kmldir + filename
         coodinatelist = getCoordinateStringFromKML(path).split(" ")
         with open(txtdir + head + ".txt", "w") as f:
             try:
+                #f.write(createEncodedPolylineString(coodinatelist).replace('\\','\\\\')
                 f.write(createEncodedPolylineString(coodinatelist))
                 f.close()
                 print "complete generate txt : " + filename
+                successcount += 1
             except:
                 print "failed generate txt : " + filename
+                failedcount += 1
+print "total: {} files, successcount: {} files, failedcount: {} files".format(successcount+failedcount, successcount, failedcount)

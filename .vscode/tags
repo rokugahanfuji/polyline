@@ -16,14 +16,13 @@ class	../lib/ElementTree.py	/^            class="js-pjax-capture-input btn btn-s
 class	../lib/ElementTree.py	/^        class="btn btn-sm btn-with-count js-toggler-target"$/;"	kind:variable	line:382
 class	../lib/ElementTree.py	/^        class="btn btn-sm btn-with-count js-toggler-target"$/;"	kind:variable	line:396
 class	../lib/ElementTree.py	/^        class="form-control header-search-input js-site-search-focus js-site-search-field is-clearable"$/;"	kind:variable	line:132
-coodinatelist	../encodekml.py	/^    coodinatelist = getCoordinateFromKML(path).split(" ")$/;"	kind:variable	line:29
-createEncodedPolylineString	../encodekml.py	/^def createEncodedPolylineString(colist):$/;"	kind:function	line:18
+coodinatelist	../encodekml.py	/^        coodinatelist = getCoordinateStringFromKML(path).split(" ")$/;"	kind:variable	line:36
+createEncodedPolylineString	../encodekml.py	/^def createEncodedPolylineString(colist):$/;"	kind:function	line:19
 decode	../lib/gistfile1.py	/^def decode(point_str):$/;"	kind:function	line:55
 encode_coords	../lib/gistfile1.py	/^def encode_coords(coords):$/;"	kind:function	line:5
 encodekml.py	../encodekml.py	1;"	kind:file	line:1
 etree	../encodekml.py	/^import xml.etree.ElementTree as ET$/;"	kind:namespace	line:4
-f	../encodekml.py	/^    f = open(txtdir+"\/"+f[:-3]+".txt","w")$/;"	kind:variable	line:30
-getCoordinateFromKML	../encodekml.py	/^def getCoordinateFromKML(path):$/;"	kind:function	line:12
+getCoordinateStringFromKML	../encodekml.py	/^def getCoordinateStringFromKML(path):$/;"	kind:function	line:11
 gistfile1.py	../lib/gistfile1.py	1;"	kind:file	line:1
 href	../lib/ElementTree.py	/^               href="\/python\/cpython\/blob\/2.7\/Lib\/xml\/etree\/ElementTree.py"$/;"	kind:variable	line:536
 href	../lib/ElementTree.py	/^               href="\/python\/cpython\/blob\/3.3\/Lib\/xml\/etree\/ElementTree.py"$/;"	kind:variable	line:546
@@ -136,16 +135,16 @@ href	../lib/ElementTree.py	/^              href="\/python\/cpython\/watchers"$/;
 in	../lib/ElementTree.py	/^getchildren() and getiterator() methods of the Element class in the$/;"	kind:class	line:1652
 in	../lib/ElementTree.py	/^getchildren() and getiterator() methods of the Element class in the$/;"	kind:class	line:1669
 itemtype	../lib/ElementTree.py	/^     itemtype="http:\/\/schema.org\/BreadcrumbList"$/;"	kind:variable	line:442
-kmldir	../encodekml.py	/^kmldir = os.path.dirname(os.path.abspath(__file__)) + '\/kml'$/;"	kind:variable	line:8
-kmldir	../unzipKML.py	/^kmldir = os.path.dirname(os.path.abspath(__file__)) + '\/kml'$/;"	kind:variable	line:6
-kmlpath	../unzipKML.py	/^    kmlpath = kmldir + '\/' + filename[:-3] + "zip"$/;"	kind:variable	line:12
-kmzdir	../unzipKML.py	/^kmzdir = os.path.dirname(os.path.abspath(__file__)) + '\/kmz'$/;"	kind:variable	line:5
-kmzpath	../unzipKML.py	/^    kmzpath = kmzdir + '\/' + filename$/;"	kind:variable	line:11
+kmldir	../encodekml.py	/^kmldir = os.path.dirname(os.path.abspath(__file__)) + '\/kml\/'$/;"	kind:variable	line:8
+kmldir	../unzipkmz.py	/^kmldir = os.path.dirname(os.path.abspath(__file__)) + '\/kml\/'$/;"	kind:variable	line:7
+kmlpath	../unzipkmz.py	/^        kmlpath = kmldir + head + ".zip"$/;"	kind:variable	line:15
+kmzdir	../unzipkmz.py	/^kmzdir = os.path.dirname(os.path.abspath(__file__)) + '\/kmz\/'$/;"	kind:variable	line:6
+kmzpath	../unzipkmz.py	/^        kmzpath = kmzdir + filename$/;"	kind:variable	line:14
 name	../lib/ElementTree.py	/^        name="q"$/;"	kind:variable	line:134
-os	../encodekml.py	/^import sys,os$/;"	kind:namespace	line:2
-os	../unzipKML.py	/^import os$/;"	kind:namespace	line:1
-path	../encodekml.py	/^    path = kmldir+"\/"+f$/;"	kind:variable	line:28
-path	../unzipKML.py	/^    path = kmldir + '\/' + filename$/;"	kind:variable	line:16
+os	../encodekml.py	/^import sys, os$/;"	kind:namespace	line:2
+os	../unzipkmz.py	/^import os$/;"	kind:namespace	line:2
+path	../encodekml.py	/^        path = kmldir + filename$/;"	kind:variable	line:35
+path	../unzipkmz.py	/^        path = kmldir + filename$/;"	kind:variable	line:21
 placeholder	../lib/ElementTree.py	/^        placeholder="Search"$/;"	kind:variable	line:136
 rel	../lib/ElementTree.py	/^               rel="nofollow">$/;"	kind:variable	line:539
 rel	../lib/ElementTree.py	/^               rel="nofollow">$/;"	kind:variable	line:549
@@ -256,14 +255,14 @@ rel	../lib/ElementTree.py	/^              rel="nofollow">$/;"	kind:variable	line
 rel	../lib/ElementTree.py	/^              rel="nofollow">$/;"	kind:variable	line:998
 role	../lib/ElementTree.py	/^            role="button"$/;"	kind:variable	line:304
 role	../lib/ElementTree.py	/^     role="navigation"$/;"	kind:variable	line:443
-shutil	../unzipKML.py	/^import shutil$/;"	kind:namespace	line:2
-sys	../encodekml.py	/^import sys,os$/;"	kind:namespace	line:2
+shutil	../unzipkmz.py	/^import shutil$/;"	kind:namespace	line:3
+sys	../encodekml.py	/^import sys, os$/;"	kind:namespace	line:2
 title	../lib/ElementTree.py	/^                title="Fork your own copy of python\/cpython to your account"$/;"	kind:variable	line:416
-txtdir	../encodekml.py	/^txtdir = os.path.dirname(os.path.abspath(__file__)) + '\/txt'$/;"	kind:variable	line:7
+txtdir	../encodekml.py	/^txtdir = os.path.dirname(os.path.abspath(__file__)) + '\/txt\/'$/;"	kind:variable	line:7
 type	../lib/ElementTree.py	/^                type="submit"$/;"	kind:variable	line:413
 type	../lib/ElementTree.py	/^        type="submit"$/;"	kind:variable	line:381
 type	../lib/ElementTree.py	/^        type="submit"$/;"	kind:variable	line:395
-unzipKML.py	../unzipKML.py	1;"	kind:file	line:1
+unzipkmz.py	../unzipkmz.py	1;"	kind:file	line:1
 value	../lib/ElementTree.py	/^        value=""$/;"	kind:variable	line:135
 xml	../encodekml.py	/^import xml.etree.ElementTree as ET$/;"	kind:namespace	line:4
-zipfile	../unzipKML.py	/^import zipfile$/;"	kind:namespace	line:3
+zipfile	../unzipkmz.py	/^import zipfile$/;"	kind:namespace	line:4
