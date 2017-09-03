@@ -38,17 +38,15 @@ successcount = failedcount = 0
 for filename in os.listdir(kmldir):
     head, ext = os.path.splitext(filename)
     if ext == ".kml":
-    #if ext == ".kml":
         path = kmldir + filename
         coodinatelist = getCoordinateStringFromKML(path).split(" ")
-        with open(txtdir + head + ".txt", "w") as f:
-            try:
+        try:
+            with open(txtdir + head.replace('p','') + ".txt", "w") as f:
                 #f.write(createEncodedPolylineString(coodinatelist).replace('\\','\\\\')
                 f.write(createEncodedPolylineString(coodinatelist))
-                f.close()
                 print "complete generate txt : " + filename
                 successcount += 1
-            except:
-                print "failed generate txt : " + filename
-                failedcount += 1
+        except:
+            print "failed generate txt : " + filename
+            failedcount += 1
 print "total: {} files, successcount: {} files, failedcount: {} files".format(successcount+failedcount, successcount, failedcount)
