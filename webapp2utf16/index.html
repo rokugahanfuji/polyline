@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head> 
+    <meta charset="utf-8"/>
+    <title>Test</title> 
+    <link rel='stylesheet' href='css/webapp.css' type='text/css' media='all' />  
+    <script async defer src= "https://maps.googleapis.com/maps/api/js?key=AIzaSyA6eCtc9zukAmcO8q7juLEHt9nriidY1es&libraries=geometry&amp;sensor=false"></script>
+    <script type='text/javascript' src="js/lz-string.js"></script>
+    <script type='text/javascript' src="js/txtManager.js"></script>
+    <script type='text/javascript' src="js/webapp.js"></script>
+    </head> 
+    <body onload="initialize()"> 
+    <div id="map"></div>
+    <div id="empty">　</div>
+    <div id="side">
+        <p>List</p>
+        <p><input type="file" id="file"></p>
+        <div id="result"></div>
+        <select id="list" size = 46 onchange="setText()"></select>
+    </div>
+    <div id = "form">
+        <h1>
+            <p>Encoded Text</p>
+            <button onclick="setPoint()">MOVE</button>
+        </h1>
+        <textarea cols=147 rows=7 id=encodedTextBox></textarea>
+    </div>
+    </body> 
+</html>
