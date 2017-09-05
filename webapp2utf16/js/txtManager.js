@@ -7,11 +7,7 @@ function initializeDatabase(json){
         length += obj["area"].length;
     }
     console.log(length);
-    var box = {};
-    for (var key in localStorage){
-        box[key] = LZString.decompressFromUTF16(localStorage[key]);
-    }
-    setSelectBox(box);
+    setLocalStorageToSelectBox();
 };
 
 function initializeJsonFile(){
@@ -33,3 +29,11 @@ function initializeJsonFile(){
     reader.addEventListener('loadend', fileLoad, false);
 
 };
+
+function setLocalStorageToSelectBox(){
+    var box = {};
+    for (var key in localStorage){
+        box[key] = LZString.decompressFromUTF16(localStorage[key]);
+    }
+    setSelectBox(box);
+}

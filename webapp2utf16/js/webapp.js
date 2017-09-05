@@ -7,6 +7,9 @@ function initialize() {
     map = new google.maps.Map(document.getElementById("map"), myOptions);
     nowPolyline = createPolyline(decodedPath,map);
     initializeJsonFile();
+    if (localStorage.length != 0){
+        setLocalStorageToSelectBox();
+    }
 };
 
 function httpGet(url){
