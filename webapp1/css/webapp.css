@@ -1,0 +1,22 @@
+#map {
+    width:900px;
+    height:900px;
+    float:left;
+}
+
+#empty{
+    float: left;
+}
+
+#side{
+    float: left;
+}
+
+#form{
+    clear : both;
+}
+
+h1{
+    font-size:15px;
+    float:center;
+}

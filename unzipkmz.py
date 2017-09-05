@@ -31,4 +31,4 @@ for filename in os.listdir(kmldir):
     except:
         print "failed unzip : " + head + ".kmz"
         failedcount += 1
-print "total: {} files, successcount: {} files, failedcount: {} files".format(successcount+failedcount, successcount, failedcount)
+print "total: {} files, success: {} files, failed: {} files".format(successcount+failedcount, successcount, failedcount)
