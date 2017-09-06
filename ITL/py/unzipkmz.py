@@ -16,19 +16,22 @@ for filename in os.listdir(kmzdir):
         shutil.copyfile(kmzpath, kmlpath)
 
 successcount = failedcount = 0
+failedList = []
 for filename in os.listdir(kmldir):
     head, ext = os.path.splitext(filename)
     if ext == ".zip":
         path = kmldir + filename
-    try:
-        with zipfile.ZipFile(path, 'r') as inputFile:
-            inputFile.extractall(kmldir)
-            genfile = inputFile.extract(inputFile.infolist()[0],kmldir)
-            os.rename(genfile,kmldir+head+".kml")
-        os.remove(path)
-        print "complete unzip : " + head + ".kmz"
-        successcount += 1
-    except:
-        print "failed unzip : " + head + ".kmz"
-        failedcount += 1
-print "total: {} files, success: {} files, failed: {} files".format(successcount+failedcount, successcount, failedcount)
+        try:
+            with zipfile.ZipFile(path, 'r') as inputFile:
+                inputFile.extractall(kmldir)
+                genfile = inputFile.extract(inputFile.infolist()[0], kmldir)
+                os.rename(genfile, kmldir + head + ".kml")
+            os.remove(path)
+            successcount += 1
+        except Exception, err:
+            failedcount += 1
+            failedList.append(filename)
+            print Exception, err
+print "[UNZIP KMZ] : total: {} files, success: {} files, failed: {} files".format(successcount + failedcount, successcount, failedcount)
+if failedcount > 0:
+    print "failed : {}".format(failedList)
