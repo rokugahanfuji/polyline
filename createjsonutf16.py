@@ -3,6 +3,8 @@ import os
 import re
 import collections as cl
 import json
+import codecs
+
 compressdir = os.path.dirname(os.path.abspath(__file__)) + '/compress/'
 
 list1 = []
@@ -26,7 +28,8 @@ try:
 
     with open(compressdir+"sub.json","rb") as f:
         with open(compressdir+"result.json","wb") as c:
-            c.write((unicode(f.read(),'utf-8')).encode('utf-16'))
+            c.write(codecs.BOM_UTF16_LE)
+            c.write((unicode(f.read(),'utf-8')).encode('utf-16-le'))
     os.remove(compressdir+"sub.json")
     print "success create json. target : {} files".format(cnt)
 except Exception,err:

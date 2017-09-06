@@ -1,19 +1,13 @@
 var map, nowPolyline
 
 function initialize() {
-    var decodedPath = google.maps.geometry.encoding.decodePath('}~kvHmzrr@ba\\hnc@jiu@r{Zqx~@hjp@pwEhnc@zhu@zflAbxn@fhjBvqHroaAgcnAp}gAeahAtqGkngAinc@_h|@r{Zad\\y|_D}_y@swg@ysg@}llBpoZqa{@xrw@~eBaaX}{uAero@uqGadY}nr@`dYs_NquNgbjAf{l@|yh@bfc@}nr@z}q@i|i@zgz@r{ZhjFr}gApob@ff}@laIsen@dgYhdPvbIren@'); 
-    var myLatlng = new google.maps.LatLng(decodedPath[0].lat(), decodedPath[0].lng());
+    var myLatlng = new google.maps.LatLng(36.103774791666666,140.08785504166664);
     var myOptions = genOptions(myLatlng);
-    map = new google.maps.Map(document.getElementById("map"), myOptions);
-    nowPolyline = createPolyline(decodedPath,map);
-    initializeList();
-};
-
-function initializeList(){
-    var list = httpGet("/gettextlist").split(',');
-    google.maps.event.addListenerOnce(map, 'idle', function(){
-        initializeDatabase(list);
-    });
+    map = new google.maps.Map(document.getElementById("map"),myOptions);
+    initializeFileComponents();
+    if (localStorage.length != 0){
+        setLocalStorageToSelectBox();
+    }
 };
 
 function httpGet(url){
@@ -33,6 +27,14 @@ function setSelectBox(selectBox){
     }
 };
 
+function clearSelectBox(){
+    var select = document.getElementById("list");
+    for(i = select.options.length - 1 ; i >= 0 ; i--)
+    {
+        select.remove(i);
+    }
+}
+
 function setText(){
     var box = document.getElementById('encodedTextBox');
     box.innerHTML=document.getElementById('list').value;
@@ -41,7 +43,9 @@ function setText(){
 
 function setPoint(){
     var decodePath = google.maps.geometry.encoding.decodePath(document.getElementById('encodedTextBox').value);
-    nowPolyline.setMap(null);
+    if (typeof nowPolyline !== "undefined"){
+        nowPolyline.setMap(null);
+    }
     nowPolyline = createPolyline(decodePath,map);
     map.setZoom(10);
     map.panTo(new google.maps.LatLng(decodePath[0].lat(),decodePath[0].lng()));

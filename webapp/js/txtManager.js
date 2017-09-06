@@ -1,19 +1,47 @@
-function initializeDatabase(list){
-   // localStorage.clear()
-    var size = 0;
-    for (var key of list){
-        var replacedkey = key.replace(".txt","");
-        if (typeof localStorage[replacedkey] !== "undefined" || key == '')
-            continue;
-        var compressed = httpGet('./'+key)
-        localStorage.setItem(replacedkey,compressed);
-        size += compressed.length;
-        console.log(key);
-        console.log(size);
+function initializeDatabase(json){
+    localStorage.clear();
+    clearSelectBox();
+    var jsonObj = JSON.parse(json);
+    var length = 0;
+    for (var obj of jsonObj){
+        localStorage.setItem(obj["id"],obj["area"]);
+        length += obj["area"].length;
     }
+    console.log(length);
+    setLocalStorageToSelectBox();
+};
+
+function initializeFileComponents(){
+    var inputFile = document.getElementById('file');
+    var reader = new FileReader();
+
+    function fileChange(ev) {
+        var target = ev.target;
+        var file = target.files[0];
+        reader.readAsText(file);
+    };
+
+    function fileLoad() {
+        initializeDatabase(reader.result);
+        console.log("loaded.")
+    };
+
+    inputFile.addEventListener('change', fileChange, false);
+    reader.addEventListener('loadend', fileLoad, false);
+};
+
+function setLocalStorageToSelectBox(){
     var box = {};
     for (var key in localStorage){
-        box[key] = LZString.decompressFromBase64(localStorage[key]);
+        box[key] = LZString.decompressFromUTF16(localStorage[key]);
     }
     setSelectBox(box);
-};
+}
+
+function clearLocalStorage(){
+    localStorage.clear();
+    clearSelectBox();
+    if (localStorage.length == 0){
+        alert("Clear LocalStorage.")
+    }
+}
